@@ -23,7 +23,6 @@ SRC_COMMENTS = '../data/guardian-all/sorted_comments-standardized.csv'
 # SRC_COMMENTS_POL = '../data/guardian-all/sorted_comments-standardized-pol.csv'
 SRC_COMMENTS_POL_ALL = '../data/guardian-all/sorted_comments-standardized-pol-all.csv'
 # SRC_COMMENTS_POL_TEXT = '../data/guardian-all/sorted_comments-standardized-pol-text.csv'
-SRC_COMMENTS_TOKENIZED_BIN = '../data/guardian-all/genzim-guardian-comments-50-tokenized.bin'
 
 
 def plot_history(history):
@@ -37,11 +36,6 @@ def plot_timestamps(article_id):
     datetimes = data[data['article_id'] == article_id]['timestamp']
     timestamps = [int(datetime.datetime.strptime(x, "%Y-%m-%dT%H:%M:%SZ").timestamp()) for x in datetimes]
     plt.hist(timestamps)
-
-def load_embedding():
-    print('Loading embeddings...')
-    word_vectors = KeyedVectors.load(SRC_COMMENTS_TOKENIZED_BIN)
-    return word_vectors
 
 def load_data():
     data_articles = pd.read_csv(SRC_ARTICLES)  # shape = (626395, 2)
