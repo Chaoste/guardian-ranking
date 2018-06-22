@@ -3,7 +3,7 @@ from tqdm import tqdm
 from keras.preprocessing.sequence import pad_sequences
 from gensim.models import KeyedVectors
 
-SRC_COMMENTS_TOKENIZED_BIN = '../data/guardian-all/genzim-guardian-comments-50-tokenized.bin'
+SRC_COMMENTS_TOKENIZED_BIN = '../data/embedding/gensim-guardian-comments-50-tokenized.bin'
 
 def load_embedding():
     print('Loading embeddings...')
@@ -28,7 +28,6 @@ def text_to_wordlist(tokenizer, vocab, text, lower=False):
     # optional: lower case
     if lower:
         text = [t.lower() for t in text]
-    # Return a list of words
     vocab.update(text)
     # Return a list of words
     return text
