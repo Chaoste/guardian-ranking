@@ -3,11 +3,11 @@ from tqdm import tqdm
 from keras.preprocessing.sequence import pad_sequences
 from gensim.models import KeyedVectors
 
-SRC_COMMENTS_TOKENIZED_BIN = '../data/embedding/gensim-guardian-comments-50-tokenized.bin'
+SRC_COMMENTS_TOKENIZED_BIN = '/embedding/gensim-guardian-comments-50-tokenized.bin'
 
-def load_embedding():
+def load_embedding(base_route):
     print('Loading embeddings...')
-    embedding_model = KeyedVectors.load(SRC_COMMENTS_TOKENIZED_BIN)
+    embedding_model = KeyedVectors.load(base_route + SRC_COMMENTS_TOKENIZED_BIN)
     word_vectors = embedding_model.wv  # Map from word to word vector
     del embedding_model # Save memory
 
